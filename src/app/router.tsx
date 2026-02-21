@@ -4,6 +4,7 @@ import { FriendPage } from "@pages/friend/ui";
 import "./index.css";
 import { HeaderWidghets } from "@widgets/header/ui";
 import { PresentPage } from "@pages/present/ui";
+import { ReceivePage } from "@pages/receive/ui";
 import { PresentListPage } from "@pages/presentList/ui";
 
 export const RouterProvider = () => {
@@ -13,6 +14,8 @@ export const RouterProvider = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/friend/:id" element={<FriendPage />} />
+        <Route path="/present" element={<PresentPage />} />
+        <Route path="/receive/:encodedPresentId" element={<ReceivePage />} />
         <Route path="/present/:id" element={<PresentPage />} />
         <Route path="/presentlist" element={<PresentListPage />} />
       </Routes>
