@@ -4,11 +4,17 @@ interface PhotoBoxProps {
   date?: string;
   photo?: string;
   select?: boolean;
+  onClick?: () => void;
 }
 
-export const PhotoBox = ({ text = "", date = "", photo, select = false }: PhotoBoxProps) => {
+export const PhotoBox = ({ text = "", date = "", photo, select = false, onClick }: PhotoBoxProps) => {
   return (
-    <div className={`rounded-[14px] border border-[#E7EBF2] bg-white shadow-[0_0_10px_0_rgba(0,0,0,0.02)] w-full flex flex-col gap-2 p-2.5 ${select ? "border-main" : ""}`}>
+    <div
+      onClick={onClick}
+      className={`rounded-[14px] border shadow-[0_0_10px_0_rgba(0,0,0,0.02)] w-full flex flex-col gap-2 p-2.5 cursor-pointer transition-colors ${
+        select ? "border-[#1283AF] bg-[#EBF1F5]" : "border-[#E7EBF2] bg-white"
+      }`}
+    >
       <div className="w-full rounded-lg bg-[#E7EBF2] overflow-hidden">
         {photo ? (
           <img src={photo} alt={text} className="w-full h-auto block" />

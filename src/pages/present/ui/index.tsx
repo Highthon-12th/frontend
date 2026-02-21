@@ -22,9 +22,9 @@ export const PresentPage = () => {
   }
 
   return (
-    <div className="w-full flex flex-1 flex-col">
-      <div className="w-full flex flex-1 flex-col">
-        <ProgressWidgets />
+    <div className="h-full flex flex-col">
+      <ProgressWidgets />
+      <div className="flex-1 overflow-y-auto pb-28">
         {StepLayout}
       </div>
       <BottomButtonWidgets text="다음" onClick={next} active={active} />
