@@ -5,13 +5,13 @@ import { BottomButtonWidgets } from "@widgets/bottomButton/ui";
 
 export const FriendPage = () => {
   return (
-    <div>
-      <div className="px-5 py-7.5 flex flex-col justify-between w-full">
+    <div className="h-full flex flex-col justify-between">
+      <div className="px-5 py-5 flex flex-col justify-between w-full gap-2.5">
         <div className="flex flex-col items-start gap-5">
           <ToProfileInfo />
           <FlatBar text="기록 추가하기" onClick={() => {}} />
         </div>
-        <div className="">
+        <div className="py-5">
           <MemoryFilterTabBar />
         </div>
       </div>
