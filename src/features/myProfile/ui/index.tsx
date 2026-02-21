@@ -1,12 +1,15 @@
+import { useMyInfo } from "@features/myProfile/api/useMyInfo";
 import { DetailProfile } from "@shared/ui/DetailProfile";
 
 export const MyProfileInfo = () => {
+  const { data } = useMyInfo();
   return (
     <DetailProfile
-      name="윤지상"
-      phone="010-1111-1111"
-      sendGift={2}
-      person={13}
+      name={data?.name}
+      phone={data?.phone}
+      sendGift={data?.presentCount}
+      person={data?.recipientCount ?? 0}
+      src={data?.profileImageUrl}
     />
   );
 };
