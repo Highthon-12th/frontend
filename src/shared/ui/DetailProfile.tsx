@@ -23,7 +23,7 @@ export const DetailProfile = ({
       <div className="w-full flex gap-3">
         <ProfileIcon />
         <div className="flex flex-col gap-2.5 justify-center">
-          <p className="text-base text-main font-semibold leading-3.5">
+          <p className="text-base text-text font-semibold leading-3.5">
             {name}
           </p>
           <p className="text-[13px] text-grey ">{phone}</p>

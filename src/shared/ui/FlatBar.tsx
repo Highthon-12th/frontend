@@ -14,7 +14,7 @@ export const FlatBar = ({ text = "", onClick }: FlatBarProps) => {
     >
       <div className="flex gap-2.5 items-center">
         <PenIcon />
-        <p className="text-sm text-main font-semibold">{text}</p>
+        <p className="text-sm text-text font-semibold">{text}</p>
       </div>
 
       <RightArrowIcon />

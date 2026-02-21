@@ -3,11 +3,12 @@
 @theme {
   --color-*: initial;
   --color-bg: #f9f9f9;
-  --color-main: #424a65;
+  --color-main: #4e7fa7;
   --color-white: #ffffff;
   --color-grey: #96a1b7;
+  --color-light-grey: #b6bac8;
   --color-stroke: #f1f1f1;
-  --color-text: #151e2e;
+  --color-text: #424a65;
   --font-pretendard: "Pretendard", sans-serif;
 }
 

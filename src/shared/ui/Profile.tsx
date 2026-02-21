@@ -17,7 +17,7 @@ export const Profile = ({
     >
       <ProfileIcon />
       <div className="flex flex-col items-center gap-2.5">
-        <p className="text-base text-main font-semibold leading-3.5">{name}</p>
+        <p className="text-base text-text font-semibold leading-3.5">{name}</p>
         <p className="text-[13px] text-grey">함께한 추억 {memory}</p>
       </div>
     </div>
