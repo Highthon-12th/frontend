@@ -19,10 +19,24 @@ export const HeaderWidghets = () => {
   if (pathname === "/") {
     content = (
       <>
-        <p className="text-base text-main font-bold">로고</p>
+        <p className="text-base font-bold text-main">로고</p>
         <Bell />
       </>
     );
+  } else if (pathname.includes("/friend/add")) {
+    content = (
+       <>
+        <LeftArrowIcon
+          className="absolute"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+        <p className="mx-auto text-base font-semibold text-text min-h-6">
+          소중한 사람 추가하기
+        </p>
+      </>
+    )
   } else if (pathname.includes("/friend")) {
     content = (
       <>
@@ -32,7 +46,7 @@ export const HeaderWidghets = () => {
             navigate("/");
           }}
         />
-        <p className="mx-auto text-base text-text font-semibold min-h-6">
+        <p className="mx-auto text-base font-semibold text-text min-h-6">
           {data?.name ?? ""}
         </p>
       </>
@@ -44,7 +58,7 @@ export const HeaderWidghets = () => {
           className="absolute"
           onClick={() => navigate(-1)}
         />
-        <p className="mx-auto text-base text-text font-semibold">보낸 선물</p>
+        <p className="mx-auto text-base font-semibold text-text">보낸 선물</p>
       </>
     );
   } else if (pathname.includes("/present")) {
@@ -64,7 +78,7 @@ export const HeaderWidghets = () => {
             }}
           />
         )}
-        <p className="mx-auto text-base text-text font-semibold">정성 보내기</p>
+        <p className="mx-auto text-base font-semibold text-text">정성 보내기</p>
       </>
     );
   }

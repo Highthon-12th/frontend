@@ -6,6 +6,7 @@ import { HeaderWidghets } from "@widgets/header/ui";
 import { PresentPage } from "@pages/present/ui";
 import { ReceivePage } from "@pages/receive/ui";
 import { PresentListPage } from "@pages/presentList/ui";
+import {AddFriendPage} from "@pages/friend/ui/add";
 
 export const RouterProvider = () => {
   return (
@@ -13,6 +14,7 @@ export const RouterProvider = () => {
       <HeaderWidghets />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/friend/add" element={<AddFriendPage />} />
         <Route path="/friend/:id" element={<FriendPage />} />
         <Route path="/present" element={<PresentPage />} />
         <Route path="/receive/:encodedPresentId" element={<ReceivePage />} />
