@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage } from "@pages/home";
+import { HomePage } from "@pages/home/ui";
 import "./index.css";
-import { HeaderWidghets } from "@widgets/header";
+import { HeaderWidghets } from "@widgets/header/ui";
 
 export const RouterProvider = () => {
   return (
