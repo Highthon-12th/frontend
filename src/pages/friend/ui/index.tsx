@@ -3,9 +3,10 @@ import { ToProfileInfo } from "@features/toProfile/ui";
 import { BottomButtonWidgets } from "@widgets/bottomButton/ui";
 import { useNavigate, useParams } from "react-router-dom";
 import { FriendMemories } from "@features/memories/ui";
+import { FloatingButton } from "@shared/ui/FloatingButton";
 
 export const FriendPage = () => {
-  const nevigate = useNavigate();
+  const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
 
@@ -23,7 +24,13 @@ export const FriendPage = () => {
       <BottomButtonWidgets
         text="정성 보내기"
         onClick={() => {
-          nevigate(`/present/${id}`);
+          navigate(`/present/${id}`);
+        }}
+      />
+      <FloatingButton
+        className="right-5 bottom-30"
+        onClick={() => {
+          navigate(`/write/${id}`);
         }}
       />
     </div>
