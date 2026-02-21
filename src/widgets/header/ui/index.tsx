@@ -81,6 +81,18 @@ export const HeaderWidghets = () => {
         <p className="mx-auto text-base font-semibold text-text">정성 보내기</p>
       </>
     );
+  } else if (pathname.includes("/write")) {
+    content = (
+      <>
+        <LeftArrowIcon
+          className="absolute"
+          onClick={() => {
+            navigate(-1);
+          }}
+        />
+        <p className="mx-auto text-base text-text font-semibold">기록하기</p>
+      </>
+    );
   }
 
   return (
