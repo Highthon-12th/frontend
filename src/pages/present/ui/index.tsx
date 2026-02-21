@@ -22,8 +22,8 @@ export const PresentPage = () => {
   }
 
   return (
-    <div className="w-full flex flex-1 flex-col">
-      <div className="w-full flex flex-1 flex-col">
+    <div className="h-full flex flex-col">
+      <div className="flex-1 overflow-y-auto pb-28">
         <ProgressWidgets />
         {StepLayout}
       </div>
