@@ -1,12 +1,12 @@
 import { useCategoryStore } from "../model/categoryStore";
 
 const TABS = [
-  { id: "memory",  label: "추억" },
-  { id: "sports",  label: "스포츠" },
-  { id: "music",   label: "음악" },
-  { id: "fashion", label: "패션" },
-  { id: "color",   label: "컬러" },
-  { id: "talking", label: "대화" },
+  { id: "MEMORY",  label: "추억" },
+  { id: "SPORTS",  label: "스포츠" },
+  { id: "MUSIC",   label: "음악" },
+  { id: "FASHION", label: "패션" },
+  { id: "COLOR",   label: "컬러" },
+  { id: "TALKING", label: "대화" },
 ] as const;
 
 export const MemoryFilterTabBar = () => {
