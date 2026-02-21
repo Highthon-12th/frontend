@@ -9,9 +9,8 @@ export const FriendPage = () => {
   return (
     <div className="h-full overflow-y-auto">
       <div className="min-h-full flex flex-col pb-30">
-        <div className="px-5 pt-3 pb-5 flex flex-col gap-5">
+        <div className="px-5 pt-3 flex flex-col gap-5">
           <ToProfileInfo />
-          <FlatBar text="기록 추가하기" onClick={() => {}} />
         </div>
         <div className="sticky top-0 z-10 bg-white">
           <MemoryFilterTabBar />
