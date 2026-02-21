@@ -12,8 +12,7 @@ interface IRecipients {
 }
 
 export const useRecipients = () => {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoieWpzMTIxODA4MjVAZ21haWwuY29tIiwiaWF0IjoxNzcxNjc1NDczLCJleHAiOjE3NzIyODAyNzN9.oP7KZ7M74vPVm5xqlJSPHeQfO40eZZKA84BqrsA62qA";
+  const token = import.meta.env.VITE_TOKEN;
 
   const query = useQuery({
     queryKey: ["recipients"],

@@ -34,12 +34,12 @@ export const HeaderWidghets = () => {
             navigate("/");
           }}
         />
-        <p className="mx-auto text-base text-text font-semibold">
+        <p className="mx-auto text-base text-text font-semibold min-h-6">
           {data?.name ?? ""}
         </p>
       </>
     );
-  } else if (pathname === "/present") {
+  } else if (pathname.includes("/present")) {
     content = (
       <>
         {step === 3 ? (
@@ -49,7 +49,7 @@ export const HeaderWidghets = () => {
             className="absolute"
             onClick={() => {
               if (step === 1) {
-                navigate("friend");
+                navigate(-1);
               } else {
                 prev();
               }

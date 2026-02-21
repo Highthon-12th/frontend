@@ -1,29 +1,27 @@
 import { API } from "@shared/api/instance";
 import { useQuery } from "@tanstack/react-query";
 
-interface IMyInfo {
+interface IMemories {
   id: number;
-  name: string;
-  email: string;
-  phone: string;
-  profileImageUrl: string;
-  recipientCount: number;
-  presentCount: number;
+  category: string;
+  content: string;
+  imageUrl: string;
+  createdAt: string;
 }
 
-export const useMyInfo = () => {
+export const useFriendMemories = (id: string) => {
   const token = import.meta.env.VITE_TOKEN;
 
   const query = useQuery({
-    queryKey: ["myInfo"],
+    queryKey: ["friendsRecipientById"],
     queryFn: async () => {
-      const { data } = await API.get("/users", {
+      const { data } = await API.get(`/records/recipients/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      return data as IMyInfo;
+      return data as IMemories[];
     },
     retry: 1,
   });
