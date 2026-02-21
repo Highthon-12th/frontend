@@ -4,7 +4,7 @@ import { PersonList } from "@widgets/personList/ui";
 
 export const HomePage = () => {
   return (
-    <div className="px-5 py-7.5 flex flex-col justify-between w-full gap-5">
+    <div className="px-5 py-5 flex flex-col w-full gap-5 flex-1">
       <MyProfileInfo />
       <FlatBar text="사람 추가하기" onClick={() => {}} />
       <PersonList />
