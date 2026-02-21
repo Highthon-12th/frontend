@@ -26,8 +26,8 @@ export const MemoryFilterTabBar = () => {
                 : "border border-[#F1F1F1] bg-[#F9F9F9] text-grey"
             }`}
           >
-            {tab.label}
-            {tab.count !== undefined && ` ${tab.count}`}
+            <span>{tab.label}</span>
+            {tab.count !== undefined && activeTab === tab.id && <span>{tab.count}</span>}
           </button>
         ))}
       </div>
