@@ -1,11 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { TextBox } from "@shared/ui/Textbox";
 import { PhotoBox } from "@shared/ui/PhotoBox";
 import { usePresentStore } from "src/entities/present/presentStore";
 import { usePresentButtonActiveStore } from "src/entities/present/buttonActiveStore";
-import { useParams } from "react-router-dom";
-import { useFriendMemories } from "@shared/api/useFriendMemories";
-import { useRecipientById } from "@shared/api/useRecipientById";
 
 const MAX = 10;
 
@@ -96,21 +93,40 @@ const RIGHT_ITEMS = [
 export const PresentStep2 = () => {
   const { memories, setMomories } = usePresentStore();
   const { setActive } = usePresentButtonActiveStore();
-  const { id } = useParams<{ id: string }>();
-  const { data } = useFriendMemories(id);
-  const profileInfo = useRecipientById(id);
 
   useEffect(() => {
     setActive(memories.length > 0);
   }, [memories]);
 
-  const toggle = (id: string) => {
-    const next = memories.includes(id)
-      ? memories.filter((m) => m !== id)
+  const toggle = (itemId: string) => {
+    const next = memories.includes(itemId)
+      ? memories.filter((m) => m !== itemId)
       : memories.length < MAX
-        ? [...memories, id]
+        ? [...memories, itemId]
         : memories;
     setMomories(next);
+  };
+
+  const renderItem = (item: IMemories) => {
+    const itemId = String(item.id);
+    return item.imageUrl ? (
+      <PhotoBox
+        key={item.id}
+        text={item.content}
+        date={item.createdAt}
+        photo={item.imageUrl}
+        select={memories.includes(itemId)}
+        onClick={() => toggle(itemId)}
+      />
+    ) : (
+      <TextBox
+        key={item.id}
+        text={item.content}
+        date={item.createdAt}
+        select={memories.includes(itemId)}
+        onClick={() => toggle(itemId)}
+      />
+    );
   };
 
   return (

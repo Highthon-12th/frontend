@@ -8,19 +8,21 @@ import { PresentStep1 } from "./step1";
 import { PresentStep2 } from "./step2";
 import { PresentStep3 } from "./step3";
 import { usePresentButtonActiveStore } from "src/entities/present/buttonActiveStore";
+import { useParams } from "react-router-dom";
 
 export const PresentPage = () => {
   const { step, next } = usePresentStepStore();
   const { active } = usePresentButtonActiveStore();
   const { giftOption } = usePresentStore();
   const [modalOpen, setModalOpen] = useState(false);
+  const { id = "" } = useParams<{ id: string }>();
 
   let StepLayout = <PresentStep1 />;
 
   if (step === 1) {
     StepLayout = <PresentStep1 />;
   } else if (step === 2) {
-    StepLayout = <PresentStep2 />;
+    StepLayout = <PresentStep2 id={id} />;
   } else if (step === 3) {
     StepLayout = <PresentStep3 />;
   }
@@ -49,12 +51,20 @@ export const PresentPage = () => {
             소중한 사람에게 보낼 정성을 만들었어요!<br />공유하기 전에 확인해 볼까요?
           </p>
         </div>
-        <button
-          className="w-full bg-main text-white font-semibold text-base py-4 rounded-[10px]"
-          onClick={() => setModalOpen(false)}
-        >
-          확인하기
-        </button>
+        <div className="flex w-full gap-3">
+          <button
+            className="flex-1 bg-stroke text-grey font-semibold text-base py-4 rounded-[10px]"
+            onClick={() => setModalOpen(false)}
+          >
+            아직이에요
+          </button>
+          <button
+            className="flex-1 bg-main text-white font-semibold text-base py-4 rounded-[10px]"
+            onClick={() => setModalOpen(false)}
+          >
+            확인하기  
+          </button>
+        </div>
       </Modal>
     </div>
   );
