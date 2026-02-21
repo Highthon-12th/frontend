@@ -11,6 +11,7 @@ import { usePresentButtonActiveStore } from "src/entities/present/buttonActiveSt
 import { useParams } from "react-router-dom";
 import { useSavePresent } from "../api/useSavePresent";
 import { useUpdatePresnetSent } from "@shared/api/useUpdatePresentSent";
+import { useConvertPresentUrl } from "@shared/api/useConvertPresentUrl";
 
 export const PresentPage = () => {
   const { step, next, reset } = usePresentStepStore();
@@ -27,6 +28,11 @@ export const PresentPage = () => {
   const updatePresnetSent = useUpdatePresnetSent({
     onSuccess: () => {
       // navigate
+    },
+  });
+  const convertPresentUrl = useConvertPresentUrl({
+    onSuccess: (data) => {
+      window.location.href = data.recapUrl;
     },
   });
 
@@ -91,6 +97,7 @@ export const PresentPage = () => {
               if (isSuccess) {
                 updatePresnetSent.mutate(data.id);
               }
+              convertPresentUrl.mutate(data!.id);
             }}
           >
             확인하기

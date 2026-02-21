@@ -10,6 +10,7 @@ interface DetailProfileProps {
   person?: number;
   memo?: number;
   src?: string;
+  giftOnClick?: () => void;
 }
 
 export const DetailProfile = ({
@@ -19,6 +20,7 @@ export const DetailProfile = ({
   person,
   memo,
   src,
+  giftOnClick,
 }: DetailProfileProps) => {
   return (
     <div className="w-full p-5 bg-white border border-stroke rounded-[14px] flex flex-col gap-4">
@@ -36,7 +38,7 @@ export const DetailProfile = ({
         </div>
       </div>
       <div className="flex justify-center gap-25">
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center gap-1" onClick={giftOnClick}>
           <GiftBoxIcon />
           <div className="flex flex-col gap-2 items-center">
             <p className="text-[12px] text-grey leading-3">보낸선물</p>
