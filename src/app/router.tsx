@@ -11,7 +11,7 @@ export const RouterProvider = () => {
       <HeaderWidghets />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/friend" element={<FriendPage />} />
+        <Route path="/friend/:id" element={<FriendPage />} />
         <Route path="/present" element={<PresentPage />} />
       </Routes>
     </BrowserRouter>

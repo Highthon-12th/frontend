@@ -9,6 +9,7 @@ interface DetailProfileProps {
   sendGift?: number;
   person?: number;
   memo?: number;
+  src?: string;
 }
 
 export const DetailProfile = ({
@@ -17,11 +18,16 @@ export const DetailProfile = ({
   sendGift = 0,
   person,
   memo,
+  src,
 }: DetailProfileProps) => {
   return (
     <div className="w-full p-5 bg-white border border-stroke rounded-[14px] flex flex-col gap-4">
       <div className="w-full flex gap-3">
-        <ProfileIcon />
+        {src ? (
+          <img src={src} alt="profile" className="w-11.5 h-11.5" />
+        ) : (
+          <ProfileIcon />
+        )}
         <div className="flex flex-col gap-2.5 justify-center">
           <p className="text-base text-text font-semibold leading-3.5">
             {name}
