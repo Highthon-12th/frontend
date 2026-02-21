@@ -1,10 +1,12 @@
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { InputLabel } from "@shared/ui/inputlabel";
 import logo from "@shared/img/logo.svg";
 import subtitle from "@shared/img/subtitile.svg";
 
 export const SigninPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,8 +37,8 @@ export const SigninPage = () => {
       </div>
 
       <div className="mt-auto flex flex-col gap-3 w-full items-center">
-        <button className="text-sm text-light-grey">회원가입</button>
-        <button className="flex w-full py-4.5 px-2.5 justify-center items-center gap-2.5 rounded-[10px] bg-main">
+        <button onClick={() => navigate("/signup")} className="text-sm text-light-grey">회원가입</button>
+        <button onClick={() => navigate("/")} className="flex w-full py-4.5 px-2.5 justify-center items-center gap-2.5 rounded-[10px] bg-main">
           <span className="text-base font-semibold text-white">로그인</span>
         </button>
       </div>

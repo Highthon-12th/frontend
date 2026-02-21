@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { InputLabel } from "@shared/ui/inputlabel";
 import { Button } from "@shared/ui/Button";
 import ProfileIcon from "@shared/img/profile.svg?react";
@@ -7,6 +8,7 @@ import logo from "@shared/img/logo.svg";
 
 
 export const SignupPage = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -63,10 +65,10 @@ export const SignupPage = () => {
         </button>
       </div>
 
-      <button className="mt-8 text-sm text-light-grey">로그인</button>
+      <button onClick={() => navigate("/signin")} className="mt-8 text-sm text-light-grey">로그인</button>
 
       <div className="mt-auto pt-3 w-full">
-        <Button text="회원가입" onClick={() => {}} />
+        <Button text="회원가입" onClick={() => navigate("/signin")} />
       </div>
     </div>
   );
