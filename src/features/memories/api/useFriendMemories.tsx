@@ -1,7 +1,7 @@
 import { API } from "@shared/api/instance";
 import { useQuery } from "@tanstack/react-query";
 
-interface IMemories {
+export interface IMemories {
   id: number;
   category: string;
   content: string;
