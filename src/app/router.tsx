@@ -5,6 +5,11 @@ import "./index.css";
 import { HeaderWidghets } from "@widgets/header/ui";
 import { PresentPage } from "@pages/present/ui";
 import { WritePage } from "@pages/write/ui";
+import { ReceivePage } from "@pages/receive/ui";
+import { PresentListPage } from "@pages/presentList/ui";
+import { SignupPage } from "@pages/signup/ui";
+import { SigninPage } from "@pages/signin/ui";
+import { AddFriendPage } from "@pages/friend/ui/add";
 
 export const RouterProvider = () => {
   return (
@@ -12,9 +17,15 @@ export const RouterProvider = () => {
       <HeaderWidghets />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/friend/add" element={<AddFriendPage />} />
         <Route path="/friend/:id" element={<FriendPage />} />
+        <Route path="/present" element={<PresentPage />} />
+        <Route path="/receive/:encodedPresentId" element={<ReceivePage />} />
         <Route path="/present/:id" element={<PresentPage />} />
         <Route path="/write/:id" element={<WritePage />} />
+        <Route path="/presentlist" element={<PresentListPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signin" element={<SigninPage />} />
       </Routes>
     </BrowserRouter>
   );
