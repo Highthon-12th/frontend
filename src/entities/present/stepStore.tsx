@@ -4,6 +4,7 @@ interface PresnetStepState {
   step: number;
   next: () => void;
   prev: () => void;
+  reset: () => void;
 }
 
 export const usePresentStepStore = create<PresnetStepState>((set) => ({
@@ -28,4 +29,5 @@ export const usePresentStepStore = create<PresnetStepState>((set) => ({
 
       return { step: returnStep };
     }),
+  reset: () => set({ step: 1 }),
 }));
