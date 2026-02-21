@@ -11,7 +11,7 @@ type GiftOption = "kakao" | "direct";
 export const PresentStep3 = () => {
   const [selected, setSelected] = useState<GiftOption | null>(null);
   const { setActive } = usePresentButtonActiveStore();
-  const { setItem, setMomories, setGiftOption } = usePresentStore();
+  const { setItem, setMomories, setGiftOption, item } = usePresentStore();
   const { reset } = usePresentStepStore();
 
   const handleReset = () => {
@@ -29,9 +29,9 @@ export const PresentStep3 = () => {
   return (
     <div className="flex flex-col px-5 pt-5 gap-5 min-h-full">
       <div className="flex flex-col gap-2">
-        <p className="text-xl font-bold text-text">무드등을 선물할까요?</p>
+        <p className="text-xl font-bold text-text">{item}을 선물할까요?</p>
         <p className="text-sm text-grey font-medium">
-          기록은 최대 6개까지 선택할 수 있어요
+          카카오톡 선물하기와 직접 고르기 중 선택하세요
         </p>
       </div>
 
@@ -42,8 +42,8 @@ export const PresentStep3 = () => {
           select={selected === "kakao"}
           onClick={() => {
             setSelected("kakao");
-            setGiftOption("kakao");
-            window.location.href = "https://gift.kakao.com/home";
+            setGiftOption("KAKAOTALK");
+            window.open("https://gift.kakao.com/home", "_blank");
           }}
         />
         <SelectButton
@@ -52,7 +52,7 @@ export const PresentStep3 = () => {
           select={selected === "direct"}
           onClick={() => {
             setSelected("direct");
-            setGiftOption("direct");
+            setGiftOption("ENTER_DIRECTLY");
           }}
         />
       </div>

@@ -5,8 +5,8 @@ interface PresnetState {
   setItem: (item: string) => void;
   memories: string[];
   setMomories: (memories: string[]) => void;
-  giftOption: "kakao" | "direct" | null;
-  setGiftOption: (giftOption: "kakao" | "direct" | null) => void;
+  giftOption: "KAKAOTALK" | "ENTER_DIRECTLY" | null;
+  setGiftOption: (giftOption: "KAKAOTALK" | "ENTER_DIRECTLY" | null) => void;
 }
 
 export const usePresentStore = create<PresnetState>((set) => ({
