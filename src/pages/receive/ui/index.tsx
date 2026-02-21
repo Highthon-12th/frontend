@@ -8,6 +8,7 @@ import {
 } from "react";
 import { useParams } from "react-router-dom";
 import { useReceivePresent, type IRecords } from "../api/useReceivePresent";
+import PresentSvg from "@shared/img/present.svg";
 
 type Rect = {
   left: number;
@@ -135,6 +136,7 @@ const RecordCard = ({
 );
 
 export const ReceivePage = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { encodedPresentId = "" } = useParams<{ encodedPresentId: string }>();
   const { data } = useReceivePresent(encodedPresentId);
 
@@ -197,62 +199,95 @@ export const ReceivePage = () => {
     [layout],
   );
 
-  return (
-    <div className="h-full">
-      <div className="px-6 pt-12 pb-6">
-        <h1 className="text-[20px] font-medium leading-relaxed">
-          <span className="text-main">{senderName}</span>님이 {giftName} 선물을
-          보냈어요
-        </h1>
-        <p className="mt-1.5 text-[14px] font-normal text-main">
-          당신의 선물을 위해 고민한 흔적이에요!
-        </p>
-      </div>
+  const openPresent = () => {
+    setIsOpen(true);
+  };
 
-      <div
-        className="relative w-full px-5 pb-6 overflow-x-hidden"
-        ref={containerRef}
-      >
-        {layout.width > 0 && (
-          <svg
-            className="absolute inset-0 pointer-events-none"
-            width={layout.width}
-            height={layout.height}
-          >
-            {paths.map((d, i) => (
-              <path
-                key={i}
-                d={d}
-                fill="none"
-                stroke="#CBD5E1"
-                strokeWidth="1.8"
-                strokeDasharray="4 8"
-                strokeLinecap="round"
+  if (!isOpen) {
+    return (
+      <div className="h-full">
+        <div className="flex flex-col items-center justify-center h-full">
+          <div className="flex flex-col items-center gap-4 pb-6">
+            <img src={PresentSvg} className="w-16 h-16 mb-4" />
+            <h1 className="text-[20px] font-medium leading-relaxed">
+              <span className="text-main">{senderName}</span>님이 {giftName}{" "}
+              선물을 보냈어요
+            </h1>
+            <p className="text-[14px] font-normal text-main mt-1.5">
+              선물을 받으셨나요? 정성을 담은<br/> 고민의 순간을 확인해보세요
+            </p>
+          </div>
+          <div className="fixed bottom-0 left-0 w-full h-24 bg-white">
+            <div className="p-2">
+              <button
+                onClick={openPresent}
+                className="w-full py-4 bg-[#5B89B1] text-white rounded-xl font-bold text-[16px] shadow-lg shadow-blue-900/10"
+              >
+                확인하기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="h-full">
+        <div className="px-6 pt-12 pb-6">
+          <h1 className="text-[20px] font-medium leading-relaxed">
+            <span className="text-main">{senderName}</span>님이 {giftName}{" "}
+            선물을 보냈어요
+          </h1>
+          <p className="mt-1.5 text-[14px] font-normal text-main">
+            당신의 선물을 위해 고민한 흔적이에요!
+          </p>
+        </div>
+
+        <div
+          className="relative w-full px-5 pb-6 overflow-x-hidden"
+          ref={containerRef}
+        >
+          {layout.width > 0 && (
+            <svg
+              className="absolute inset-0 pointer-events-none"
+              width={layout.width}
+              height={layout.height}
+            >
+              {paths.map((d, i) => (
+                <path
+                  key={i}
+                  d={d}
+                  fill="none"
+                  stroke="#CBD5E1"
+                  strokeWidth="1.8"
+                  strokeDasharray="4 8"
+                  strokeLinecap="round"
+                />
+              ))}
+            </svg>
+          )}
+
+          <div className="relative z-10 flex flex-col gap-12">
+            {records.map((record, i) => (
+              <RecordCard
+                key={record.id}
+                record={record}
+                index={i}
+                onLoad={measure}
+                refCallback={(el) => {
+                  recordRefs.current[i] = el;
+                }}
               />
             ))}
-          </svg>
-        )}
+          </div>
 
-        <div className="relative z-10 flex flex-col gap-12">
-          {records.map((record, i) => (
-            <RecordCard
-              key={record.id}
-              record={record}
-              index={i}
-              onLoad={measure}
-              refCallback={(el) => {
-                recordRefs.current[i] = el;
-              }}
-            />
-          ))}
-        </div>
-
-        <div className="pt-8">
-          <button className="w-full py-4 bg-[#5B89B1] text-white rounded-xl font-bold text-[16px] shadow-lg shadow-blue-900/10">
-            공유하기
-          </button>
+          <div className="pt-8">
+            <button className="w-full py-4 bg-[#5B89B1] text-white rounded-xl font-bold text-[16px] shadow-lg shadow-blue-900/10">
+              공유하기
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
