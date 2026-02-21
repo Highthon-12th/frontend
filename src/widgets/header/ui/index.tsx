@@ -12,9 +12,7 @@ export const HeaderWidghets = () => {
   const { id } = useParams<{ id: string }>();
 
   // 항상 호출
-  const { data } = useRecipientById(id!, {
-    enabled: pathname.includes("/friend") && !!id,
-  });
+  const { data } = useRecipientById(id!);
 
   let content = <></>;
 
@@ -34,12 +32,22 @@ export const HeaderWidghets = () => {
             navigate("/");
           }}
         />
-        <p className="mx-auto text-base text-text font-semibold">
+        <p className="mx-auto text-base text-text font-semibold min-h-6">
           {data?.name ?? ""}
         </p>
       </>
     );
-  } else if (pathname === "/present") {
+  } else if (pathname === "/presentlist") {
+    content = (
+      <>
+        <LeftArrowIcon
+          className="absolute"
+          onClick={() => navigate(-1)}
+        />
+        <p className="mx-auto text-base text-text font-semibold">보낸 선물</p>
+      </>
+    );
+  } else if (pathname.includes("/present")) {
     content = (
       <>
         {step === 3 ? (
@@ -49,7 +57,7 @@ export const HeaderWidghets = () => {
             className="absolute"
             onClick={() => {
               if (step === 1) {
-                navigate("friend");
+                navigate(-1);
               } else {
                 prev();
               }

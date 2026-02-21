@@ -1,4 +1,6 @@
+import { useRecipientById } from "@shared/api/useRecipientById";
 import { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
 import { usePresentButtonActiveStore } from "src/entities/present/buttonActiveStore";
 import { usePresentStore } from "src/entities/present/presentStore";
 
@@ -6,6 +8,8 @@ export const PresentStep1 = () => {
   const { setActive } = usePresentButtonActiveStore();
   const { setItem, item } = usePresentStore();
   const textareaRef = useRef<null | HTMLTextAreaElement>(null);
+  const { id } = useParams<{ id: string }>();
+  const { data } = useRecipientById(id);
 
   const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
@@ -35,7 +39,7 @@ export const PresentStep1 = () => {
     <div className="w-full flex flex-col">
       <div className="w-full flex flex-col px-5 gap-3">
         <p className="text-lg text-text font-semibold">
-          <span className="text-main">이름</span>
+          <span className="text-main">{data?.name}</span>
           에게 보내고 싶은 선물이 있나요?
         </p>
         <p className="text-[14px] text-grey font-medium leading-3.5">
@@ -44,7 +48,7 @@ export const PresentStep1 = () => {
       </div>
       <div className="py-7.5 px-5">
         <textarea
-          className="w-full border border-stroke bg-white rounded-[10px] p-4 text-[14px] font-medium focus:border-stroke outline-none"
+          className="w-full border border-stroke bg-white rounded-[10px] p-4 text-[14px] font-medium focus:border-stroke outline-none plcaeholder-light-grey"
           placeholder="핸드폰 케이스, 무드등, 가방 등"
           onChange={onTextareaChange}
           value={item}
