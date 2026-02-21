@@ -17,3 +17,10 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg);
 }
+
+@utility scrollbar-hide {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
