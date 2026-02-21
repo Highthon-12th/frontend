@@ -7,7 +7,7 @@ export const ProgressWidgets = () => {
   const width = `${(step / length) * 100}%`;
   return (
     <div className="w-full flex flex-col">
-      <div className="w-full bg-light-grey h-2">
+      <div className="w-full bg-bg h-2">
         <div
           className={`h-full bg-main transition-width duration-200 ease-out`}
           style={{ width }}
