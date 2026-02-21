@@ -6,6 +6,8 @@ import { HeaderWidghets } from "@widgets/header/ui";
 import { PresentPage } from "@pages/present/ui";
 import { ReceivePage } from "@pages/receive/ui";
 import { PresentListPage } from "@pages/presentList/ui";
+import { SignupPage } from "@pages/signup/ui";
+import { SigninPage } from "@pages/signin/ui";
 
 export const RouterProvider = () => {
   return (
@@ -18,6 +20,8 @@ export const RouterProvider = () => {
         <Route path="/receive/:encodedPresentId" element={<ReceivePage />} />
         <Route path="/present/:id" element={<PresentPage />} />
         <Route path="/presentlist" element={<PresentListPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signin" element={<SigninPage />} />
       </Routes>
     </BrowserRouter>
   );
