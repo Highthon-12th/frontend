@@ -15,12 +15,12 @@ export const FriendMemories = ({ id = "" }: FriendMemoriesProps) => {
 
   useEffect(() => {
     const counts = {
-      memory:  data.filter((d) => d.category === "memory").length,
-      sports:  data.filter((d) => d.category === "sports").length,
-      music:   data.filter((d) => d.category === "music").length,
-      fashion: data.filter((d) => d.category === "fashion").length,
-      color:   data.filter((d) => d.category === "color").length,
-      talking: data.filter((d) => d.category === "talking").length,
+      MEMORY:  data.filter((d) => d.category === "MEMORY").length,
+      SPORTS:  data.filter((d) => d.category === "SPORTS").length,
+      MUSIC:   data.filter((d) => d.category === "MUSIC").length,
+      FASHION: data.filter((d) => d.category === "FASHION").length,
+      COLOR:   data.filter((d) => d.category === "COLOR").length,
+      TALKING: data.filter((d) => d.category === "TALKING").length,
     };
     setCounts(counts);
   }, [data]);
