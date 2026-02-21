@@ -12,9 +12,7 @@ export const HeaderWidghets = () => {
   const { id } = useParams<{ id: string }>();
 
   // 항상 호출
-  const { data } = useRecipientById(id!, {
-    enabled: pathname.includes("/friend") && !!id,
-  });
+  const { data } = useRecipientById(id!);
 
   let content = <></>;
 
