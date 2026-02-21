@@ -1,6 +1,5 @@
 import { MemoryFilterTabBar } from "@features/category/ui";
 import { ToProfileInfo } from "@features/toProfile/ui";
-import { FlatBar } from "@shared/ui/FlatBar";
 import { BottomButtonWidgets } from "@widgets/bottomButton/ui";
 import { TextBox } from "@shared/ui/Textbox";
 import { PhotoBox } from "@shared/ui/PhotoBox";

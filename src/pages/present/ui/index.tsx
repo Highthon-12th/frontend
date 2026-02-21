@@ -23,8 +23,8 @@ export const PresentPage = () => {
 
   return (
     <div className="h-full flex flex-col">
+      <ProgressWidgets />
       <div className="flex-1 overflow-y-auto pb-28">
-        <ProgressWidgets />
         {StepLayout}
       </div>
       <BottomButtonWidgets text="다음" onClick={next} active={active} />
