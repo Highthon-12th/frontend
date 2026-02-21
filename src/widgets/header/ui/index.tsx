@@ -1,6 +1,7 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import Bell from "@shared/img/bell.svg?react";
+import EditIcon from "@shared/img/eidt.svg?react";
 import LeftArrowIcon from "@shared/img/left_arrow.svg?react";
+import HeaderLogoIcon from "@shared/img/header-logo.svg?react";
 import { usePresentStepStore } from "src/entities/present/stepStore";
 import { useRecipientById } from "@shared/api/useRecipientById";
 
@@ -19,13 +20,12 @@ export const HeaderWidghets = () => {
   if (pathname === "/") {
     content = (
       <>
-        <p className="text-base font-bold text-main">로고</p>
-        <Bell />
+        <HeaderLogoIcon />
       </>
     );
   } else if (pathname.includes("/friend/add")) {
     content = (
-       <>
+      <>
         <LeftArrowIcon
           className="absolute"
           onClick={() => {
@@ -36,7 +36,7 @@ export const HeaderWidghets = () => {
           소중한 사람 추가하기
         </p>
       </>
-    )
+    );
   } else if (pathname.includes("/friend")) {
     content = (
       <>
@@ -54,10 +54,7 @@ export const HeaderWidghets = () => {
   } else if (pathname === "/presentlist") {
     content = (
       <>
-        <LeftArrowIcon
-          className="absolute"
-          onClick={() => navigate(-1)}
-        />
+        <LeftArrowIcon className="absolute" onClick={() => navigate(-1)} />
         <p className="mx-auto text-base font-semibold text-text">보낸 선물</p>
       </>
     );
@@ -93,10 +90,23 @@ export const HeaderWidghets = () => {
         <p className="mx-auto text-base text-text font-semibold">기록하기</p>
       </>
     );
+  } else if (pathname.includes("/receive")) {
+    content = (
+      <>
+        <LeftArrowIcon
+          className="absolute"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+        <p className="mx-auto text-base text-text font-semibold">미리보기</p>
+        <EditIcon className="absolute right-5" />
+      </>
+    );
   }
 
   return (
-    <header className="bg-white px-5 py-3 pt-12.5 flex justify-between items-center shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
+    <header className="relative bg-white px-5 py-3 pt-12.5 flex justify-between items-center shadow-[0_4px_20px_0_rgba(0,0,0,0.04)]">
       {content}
     </header>
   );

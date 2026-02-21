@@ -23,7 +23,7 @@ export const RouterProvider = () => {
         <Route path="/receive/:encodedPresentId" element={<ReceivePage />} />
         <Route path="/present/:id" element={<PresentPage />} />
         <Route path="/write/:id" element={<WritePage />} />
-        <Route path="/presentlist" element={<PresentListPage />} />
+        <Route path="/presentlist/:id" element={<PresentListPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
       </Routes>
