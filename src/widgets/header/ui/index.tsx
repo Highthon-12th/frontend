@@ -39,6 +39,16 @@ export const HeaderWidghets = () => {
         </p>
       </>
     );
+  } else if (pathname === "/presentlist") {
+    content = (
+      <>
+        <LeftArrowIcon
+          className="absolute"
+          onClick={() => navigate(-1)}
+        />
+        <p className="mx-auto text-base text-text font-semibold">보낸 선물</p>
+      </>
+    );
   } else if (pathname.includes("/present")) {
     content = (
       <>
