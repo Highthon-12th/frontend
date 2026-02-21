@@ -1,13 +1,20 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Bell from "@shared/img/bell.svg?react";
 import LeftArrowIcon from "@shared/img/left_arrow.svg?react";
 import { usePresentStepStore } from "src/entities/present/stepStore";
+import { useRecipientById } from "@shared/api/useRecipientById";
 
 export const HeaderWidghets = () => {
   const location = useLocation();
   const pathname = location.pathname;
   const { step, prev } = usePresentStepStore();
   const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
+
+  // 항상 호출
+  const { data } = useRecipientById(id!, {
+    enabled: pathname.includes("/friend") && !!id,
+  });
 
   let content = <></>;
 
@@ -18,11 +25,18 @@ export const HeaderWidghets = () => {
         <Bell />
       </>
     );
-  } else if (pathname === "/friend") {
+  } else if (pathname.includes("/friend")) {
     content = (
       <>
-        <LeftArrowIcon className="absolute" />
-        <p className="mx-auto text-base text-text font-semibold">이름</p>
+        <LeftArrowIcon
+          className="absolute"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+        <p className="mx-auto text-base text-text font-semibold">
+          {data?.name ?? ""}
+        </p>
       </>
     );
   } else if (pathname === "/present") {
